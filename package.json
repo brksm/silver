@@ -1,0 +1,19 @@
+{
+  "name": "silver",
+  "version": "0.0.1",
+  "description": "Silver marketplace where you can buy and sell silver",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha tests/**.js",
+    "lint": "eslint ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^2.11.0",
+    "mocha": "^2.5.3"
+  }
+}

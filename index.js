@@ -3,8 +3,8 @@
 // then it would be better to go straight to e.g. TypeScript which gives us
 // much better bug prevention, IntelliSense-style auto-completion etc.
 
-const constructMarketplace = require('./marketplace');
-const snapshotWriter = require('./snapshot-writer');
+const constructMarketplace = require('./app/marketplace');
+const snapshotWriter = require('./app/snapshot-writer');
 
 // Some test orders
 const buyOrders = [300.0, 300.0, 298.5, 298.5, 298.5, 301.5]

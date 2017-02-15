@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const constructMarketplace = require('../marketplace');
+const constructMarketplace = require('../app/marketplace');
 
 // There is a debate whether test code should be as DRY as production code
 // or if we should make it more explicit and repetitive to avoid risk of bugs

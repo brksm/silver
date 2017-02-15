@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const constructMarketplace = require('../marketplace');
+const constructMarketplace = require('../app/marketplace');
 const testOrders = require('./resources/test-orders');
 
 describe('Take snapshot', function () {

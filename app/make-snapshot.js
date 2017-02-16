@@ -1,6 +1,8 @@
-module.exports = makeSnapshot;
+// This is a stateless module (just a pure function)
+// the only job of which is to take a list of orders and to
+// map it to a snapshot
 
-function makeSnapshot(orders) {
+module.exports = function makeSnapshot(orders) {
   const buyOrders = orders.filter(o => o.buySell === 'BUY');
   const sellOrders = orders.filter(o => o.buySell === 'SELL');
 
@@ -8,7 +10,7 @@ function makeSnapshot(orders) {
   const sell = internalMakeSnapshot(sellOrders, (a, b) => a.price > b.price);
 
   return { buy, sell };
-}
+};
 
 function internalMakeSnapshot(orders, sorter) {
   // Feels a bit wrong to use floats as keys in object - but should work for now
@@ -23,9 +25,9 @@ function groupOrdersByPrice(grouping, order) {
   // I don't want to mutate the grouping so I'm doing some extra work
   // In practice this won't matter most of the time but it feels better
   // because use of this function suggests that it is a pure function
-  const newGrouping = Object.assign({}, grouping);
-  newGrouping[order.price] = !grouping[order.price] ? [order] : grouping[order.price].concat(order);
-  return newGrouping;
+  return Object.assign({}, grouping, {
+    [order.price]: (grouping[order.price] || []).concat(order)
+  });
 }
 
 function aggregateOrders(group) {

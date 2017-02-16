@@ -27,4 +27,4 @@ const snapshot = marketplace.getSnapshot();
 // For a 'real' application we can simply replace this snapshot writer
 // with something more user-friendly like a React component
 // (pass snapshot in via props), HTML template engine or whatever.
-snapshotWriter.write(snapshot);
+snapshotWriter(snapshot);

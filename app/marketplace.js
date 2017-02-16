@@ -1,8 +1,4 @@
 const assert = require('assert');
-
-// This is a stateless module (just a pure function)
-// the only job of which is to take a list of orders and to
-// map it to a snapshot
 const makeSnapshot = require('./make-snapshot');
 
 // This is not a marketplace but a constructor for marketplaces
@@ -21,15 +17,13 @@ module.exports = function constructMarketplace(initialOrders) {
   return {
     // I really don't want to expose the state but in current setup
     // I need to do it to do test assertions (e.g. 'this order has been placed')
-    getState,
+    // Could solve this by factoring out state management logic, then using mock
+    // implementation etc.
+    getState: () => state,
     placeOrder,
     cancelOrder,
     getSnapshot: () => makeSnapshot(Object.values(state.orders))
   };
-
-  function getState() {
-    return state;
-  }
 
   function placeOrder(order) {
     // Can use better library for argument validation
